@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tiacademy.vendas.core.crud.CrudController;
-import br.com.tiacademy.vendas.domain.Vendedor;
-import br.com.tiacademy.vendas.dto.VendedorDTO;
+import br.com.tiacademy.vendas.domain.Pedido;
+import br.com.tiacademy.vendas.dto.PedidoDTO;
 
 @RestController
-@RequestMapping("/vendedor")
-public class VendedorController extends CrudController<Vendedor, VendedorDTO, Long> {
-	
+@RequestMapping("/pedido")
+public class PedidoController extends CrudController<Pedido, PedidoDTO, Long>{
+
 }

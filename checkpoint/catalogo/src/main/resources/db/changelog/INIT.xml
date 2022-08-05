@@ -5,26 +5,6 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-	<changeSet id="1" author="edmilson">
-
-		<preConditions onFail="MARK_RAN"
-			onFailMessage="tabela artista já existe">
-			<not>
-				<tableExists tableName="artista" />
-			</not>
-		</preConditions>
-
-		<createTable tableName="artista">
-			<column name="id" type="int">
-				<constraints nullable="false" primaryKey="true"
-					primaryKeyName="pk_artista" />
-			</column>
-			<column name="nome" type="VARCHAR(255)">
-				<constraints nullable="false" unique="true" />
-			</column>
-		</createTable>
-	</changeSet>
-	
 	<changeSet id="2" author="edmilson">
 
 		<preConditions onFail="MARK_RAN"
@@ -50,5 +30,31 @@
 			<column name="uf" type="VARCHAR(255)"/>
 		</createTable>
 	</changeSet>
+	
+	
+	<changeSet id="1" author="edmilson">
 
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="tabela artista já existe">
+			<not>
+				<tableExists tableName="artista" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="artista">
+			<column name="id" type="int">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_artista" />
+			</column>
+			<column name="nome" type="VARCHAR(255)">
+				<constraints nullable="false" unique="true" />
+			</column>
+			<column name="gravadora_id" type="int">
+				<constraints foreignKeyName="fk_artista_gravadora" 
+							referencedTableName="gravadora"
+							referencedColumnNames="id"/>
+			</column>
+		</createTable>
+	</changeSet>	
+	
 </databaseChangeLog>
